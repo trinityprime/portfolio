@@ -1,4 +1,3 @@
-import { title, subtitle } from "@/components/primitives";
 import DefaultLayout from "@/layouts/default";
 import osuBanner from "../../public/osu banner.jpeg";
 import profileIcon from "../../public/profile-icon.jpeg";
