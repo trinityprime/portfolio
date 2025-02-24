@@ -51,7 +51,8 @@ export default function IndexPage() {
   const projects: Project[] = [
     {
       title: "E-Commerce Platform",
-      description: "A full-stack e-commerce solution with cart functionality and payment integration",
+      description:
+        "A full-stack e-commerce solution with cart functionality and payment integration",
       tech: ["React", "Node.js", "MongoDB", "Stripe"],
       image: "/project1.jpg",
       github: "https://github.com/yourusername/ecommerce",
@@ -59,7 +60,8 @@ export default function IndexPage() {
     },
     {
       title: "Task Management App",
-      description: "Collaborative task management application with real-time updates",
+      description:
+        "Collaborative task management application with real-time updates",
       tech: ["Vue.js", "Firebase", "Tailwind CSS"],
       image: "/project2.jpg",
       github: "https://github.com/yourusername/taskapp",
@@ -101,7 +103,8 @@ export default function IndexPage() {
       company: "Tech Solutions Inc.",
       role: "Frontend Developer",
       period: "2022 - Present",
-      description: "Developed responsive web applications using React and Vue.js. Implemented user authentication and dashboard analytics.",
+      description:
+        "Developed responsive web applications using React and Vue.js. Implemented user authentication and dashboard analytics.",
       achievements: [
         "Reduced page load time by 40%",
         "Implemented CI/CD pipeline",
@@ -112,7 +115,8 @@ export default function IndexPage() {
       company: "Digital Innovators",
       role: "Web Development Intern",
       period: "2021 - 2022",
-      description: "Assisted in developing e-commerce solutions and content management systems.",
+      description:
+        "Assisted in developing e-commerce solutions and content management systems.",
       achievements: [
         "Built custom WordPress themes",
         "Implemented payment gateway integrations",
@@ -142,17 +146,25 @@ export default function IndexPage() {
         <img src={osuBanner} alt="OSU Banner" className="w-full rounded-t-lg" />
         <section className="flex flex-col items-center justify-center bg-gray-100 pt-16 relative">
           <div className="absolute top-0 left-8 transform -translate-y-1/3 flex items-center">
-            <img src={profileIcon} alt="Profile Icon" className="w-32 h-32 rounded-3xl" />
+            <img
+              src={profileIcon}
+              alt="Profile Icon"
+              className="w-32 h-32 rounded-3xl"
+            />
             <div className="ml-4 mt-8 text-left">
               <p className="text-3xl font-bold">Ryan Lim</p>
               <div className="flex items-center">
                 <p className="text-xl text-black">Singapore</p>
-                <img src={flagIcon} alt="Singapore Flag" className="w-6 h-6 ml-2 mt-1" />
+                <img
+                  src={flagIcon}
+                  alt="Singapore Flag"
+                  className="w-6 h-6 ml-2 mt-1"
+                />
               </div>
             </div>
           </div>
 
-          <div className="w-full mt-24 px-4">
+          <div className="w-full mt-10 px-4">
             <Tabs variant="underlined" className="w-full mt-6">
               <Tab key="about" title="About Me">
                 <AboutSection />
@@ -164,7 +176,10 @@ export default function IndexPage() {
                 <SkillsSection skills={skills} />
               </Tab>
               <Tab key="experience" title="Experience">
-                <ExperienceSection experience={experience} education={education} />
+                <ExperienceSection
+                  experience={experience}
+                  education={education}
+                />
               </Tab>
               <Tab key="contact" title="Contact">
                 <ContactSection />
@@ -185,13 +200,21 @@ function AboutSection() {
         <h2 className="text-2xl font-bold mb-4">About Me</h2>
         <div className="space-y-4">
           <p>
-            I'm a passionate web developer with expertise in building interactive and responsive user interfaces. With a strong foundation in both frontend and backend technologies, I enjoy creating seamless web experiences that solve real-world problems.
+            I'm a passionate web developer with expertise in building
+            interactive and responsive user interfaces. With a strong foundation
+            in both frontend and backend technologies, I enjoy creating seamless
+            web experiences that solve real-world problems.
           </p>
           <p>
-            My journey in tech began during my computer science studies where I developed a fascination with web technologies. Since then, I've worked on various projects ranging from e-commerce platforms to content management systems and custom web applications.
+            My journey in tech began during my computer science studies where I
+            developed a fascination with web technologies. Since then, I've
+            worked on various projects ranging from e-commerce platforms to
+            content management systems and custom web applications.
           </p>
           <p>
-            When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing my knowledge through tech blogs and community events.
+            When I'm not coding, you can find me exploring new technologies,
+            contributing to open-source projects, or sharing my knowledge
+            through tech blogs and community events.
           </p>
         </div>
         <div className="mt-6">
@@ -211,10 +234,16 @@ function ProjectsSection({ projects }: { projects: Project[] }) {
         {projects.map((project, index) => (
           <Card key={index} className="w-full">
             <CardBody className="p-0">
-              <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-48 object-cover"
+              />
               <div className="p-4">
                 <h3 className="text-xl font-bold">{project.title}</h3>
-                <p className="text-sm text-gray-600 mt-2">{project.description}</p>
+                <p className="text-sm text-gray-600 mt-2">
+                  {project.description}
+                </p>
                 <div className="flex flex-wrap gap-2 mt-3">
                   {project.tech.map((tech, i) => (
                     <Chip key={i} size="sm" color="primary" variant="flat">
@@ -225,10 +254,22 @@ function ProjectsSection({ projects }: { projects: Project[] }) {
               </div>
             </CardBody>
             <CardFooter className="flex justify-between">
-              <Button size="sm" as="a" href={project.github} target="_blank" variant="bordered">
+              <Button
+                size="sm"
+                as="a"
+                href={project.github}
+                target="_blank"
+                variant="bordered"
+              >
                 GitHub
               </Button>
-              <Button size="sm" as="a" href={project.demo} target="_blank" color="primary">
+              <Button
+                size="sm"
+                as="a"
+                href={project.demo}
+                target="_blank"
+                color="primary"
+              >
                 Live Demo
               </Button>
             </CardFooter>
@@ -253,7 +294,12 @@ function SkillsSection({ skills }: { skills: Skills }) {
                   <span className="text-sm font-medium">{skill.name}</span>
                   <span className="text-sm font-medium">{skill.level}%</span>
                 </div>
-                <Progress value={skill.level} color="primary" aria-label={`${skill.name} proficiency`} className="h-2" />
+                <Progress
+                  value={skill.level}
+                  color="primary"
+                  aria-label={`${skill.name} proficiency`}
+                  className="h-2"
+                />
               </div>
             ))}
           </div>
@@ -266,7 +312,12 @@ function SkillsSection({ skills }: { skills: Skills }) {
                   <span className="text-sm font-medium">{skill.name}</span>
                   <span className="text-sm font-medium">{skill.level}%</span>
                 </div>
-                <Progress value={skill.level} color="primary" aria-label={`${skill.name} proficiency`} className="h-2" />
+                <Progress
+                  value={skill.level}
+                  color="primary"
+                  aria-label={`${skill.name} proficiency`}
+                  className="h-2"
+                />
               </div>
             ))}
           </div>
@@ -279,7 +330,12 @@ function SkillsSection({ skills }: { skills: Skills }) {
                   <span className="text-sm font-medium">{skill.name}</span>
                   <span className="text-sm font-medium">{skill.level}%</span>
                 </div>
-                <Progress value={skill.level} color="primary" aria-label={`${skill.name} proficiency`} className="h-2" />
+                <Progress
+                  value={skill.level}
+                  color="primary"
+                  aria-label={`${skill.name} proficiency`}
+                  className="h-2"
+                />
               </div>
             ))}
           </div>
@@ -290,7 +346,13 @@ function SkillsSection({ skills }: { skills: Skills }) {
 }
 
 // Experience and Education Section Component
-function ExperienceSection({ experience, education }: { experience: Experience[]; education: Education[] }) {
+function ExperienceSection({
+  experience,
+  education,
+}: {
+  experience: Experience[];
+  education: Education[];
+}) {
   return (
     <div className="my-8">
       <h2 className="text-2xl font-bold mb-6">Work Experience</h2>
@@ -351,28 +413,54 @@ function ContactSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <p className="mb-4">
-              I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
+              I'm always open to discussing new projects, creative ideas or
+              opportunities to be part of your vision.
             </p>
             <div className="space-y-3">
               <div className="flex items-center">
                 <span className="font-medium w-24">Email:</span>
-                <a href="mailto:ryan.lim@example.com" className="text-primary">ryan.lim@example.com</a>
+                <a href="mailto:ryan.lim@example.com" className="text-primary">
+                  ryan.lim@example.com
+                </a>
               </div>
               <div className="flex items-center">
                 <span className="font-medium w-24">LinkedIn:</span>
-                <a href="https://linkedin.com/in/ryanlim" target="_blank" className="text-primary">linkedin.com/in/ryanlim</a>
+                <a
+                  href="https://linkedin.com/in/ryanlim"
+                  target="_blank"
+                  className="text-primary"
+                >
+                  linkedin.com/in/ryanlim
+                </a>
               </div>
               <div className="flex items-center">
                 <span className="font-medium w-24">GitHub:</span>
-                <a href="https://github.com/ryanlim" target="_blank" className="text-primary">github.com/ryanlim</a>
+                <a
+                  href="https://github.com/ryanlim"
+                  target="_blank"
+                  className="text-primary"
+                >
+                  github.com/ryanlim
+                </a>
               </div>
             </div>
           </div>
           <div className="flex flex-col space-y-4">
             <p className="mb-2">Or send me a message directly:</p>
-            <input className="w-full px-4 py-2 border rounded-md" placeholder="Your Name" />
-            <input className="w-full px-4 py-2 border rounded-md" placeholder="Your Email" type="email" />
-            <textarea className="w-full px-4 py-2 border rounded-md" placeholder="Your Message" rows={4} />
+            <input
+              className="w-full px-4 py-2 border rounded-md"
+              placeholder="Your Name"
+            />
+            <input
+              className="w-full px-4 py-2 border rounded-md"
+              placeholder="Your Email"
+              type="email"
+            />
+            <textarea
+              className="w-full px-4 py-2 border rounded-md"
+              placeholder="Your Message"
+              rows={4}
+            />
             <Button color="primary">Send Message</Button>
           </div>
         </div>
