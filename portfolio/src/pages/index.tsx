@@ -214,7 +214,7 @@ function AboutSection() {
           <Button
             color="primary"
             as="a"
-            href="../../public/Lim_Kien_Loong_Ryan_Resume.pdf"
+            href="../../Lim_Kien_Loong_Ryan_Resume.pdf"
             target="_blank"
           >
             View Resume
