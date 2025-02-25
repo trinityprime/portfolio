@@ -9,6 +9,7 @@ import { Chip } from "@heroui/chip";
 import { Progress } from "@heroui/progress";
 import { Divider } from "@heroui/divider";
 import { Tabs, Tab } from "@heroui/tabs";
+import { title } from "../components/primitives";
 
 // Type Definitions
 type Project = {
@@ -59,13 +60,13 @@ export default function IndexPage() {
       demo: "https://myproject.com",
     },
     {
-      title: "Task Management App",
+      title: "52 Blue",
       description:
-        "Collaborative task management application with real-time updates",
-      tech: ["Vue.js", "Firebase", "Tailwind CSS"],
-      image: "/project2.jpg",
-      github: "https://github.com/yourusername/taskapp",
-      demo: "https://mytaskapp.com",
+        "Solo passion project about a individual whale of unidentified species that calls at the unusual frequency of 52 hertz",
+      tech: ["React.js", "Tailwind CSS"],
+      image: "/52 blue.png",
+      github: "https://github.com/trinityprime/52hz-",
+      demo: "https://52hz-github-io-rxdz.vercel.app/",
     },
     {
       title: "Portfolio Website",
@@ -143,8 +144,9 @@ export default function IndexPage() {
   return (
     <DefaultLayout>
       <div className="max-w-5xl mx-auto relative">
+        <div className="relative z-10 ax-w-5xl mx-auto"></div>
         <img src={osuBanner} alt="OSU Banner" className="w-full rounded-t-lg" />
-        <section className="flex flex-col items-center justify-center bg-gray-100 pt-16 relative">
+        <section className="flex flex-col items-center justify-center bg-gray-100 pt-8 relative">
           <div className="absolute top-0 left-8 transform -translate-y-1/3 flex items-center">
             <img
               src={profileIcon}
@@ -195,30 +197,29 @@ export default function IndexPage() {
 // About Section Component
 function AboutSection() {
   return (
-    <Card className="w-full my-8">
+    <Card className="w-full">
       <CardBody>
-        <h2 className="text-2xl font-bold mb-4">About Me</h2>
+        <h2 className={`${title({ size: "sm", color: "blue" })} mb-3`}>
+          About Me
+        </h2>
         <div className="space-y-4">
           <p>
-            I'm a passionate web developer with expertise in building
-            interactive and responsive user interfaces. With a strong foundation
-            in both frontend and backend technologies, I enjoy creating seamless
-            web experiences that solve real-world problems.
-          </p>
-          <p>
-            My journey in tech began during my computer science studies where I
-            developed a fascination with web technologies. Since then, I've
-            worked on various projects ranging from e-commerce platforms to
-            content management systems and custom web applications.
-          </p>
-          <p>
-            When I'm not coding, you can find me exploring new technologies,
-            contributing to open-source projects, or sharing my knowledge
-            through tech blogs and community events.
+            Hi, I'm Ryan! With a strong interest in software dev and all things
+            IoT, I enjoy staying up to date with the latest tech trends and
+            innovations. Outside the realm of tech, I am passionate in enriching
+            the lives of youths, through mentorship, community service
+            initiatives, or just volunteering in general.
           </p>
         </div>
-        <div className="mt-6">
-          <Button color="primary">Download Resume</Button>
+        <div className="mt-4">
+          <Button
+            color="primary"
+            as="a"
+            href="../../public/Lim_Kien_Loong_Ryan_Resume.pdf"
+            target="_blank"
+          >
+            View Resume
+          </Button>
         </div>
       </CardBody>
     </Card>
@@ -228,9 +229,11 @@ function AboutSection() {
 // Projects Section Component
 function ProjectsSection({ projects }: { projects: Project[] }) {
   return (
-    <div className="my-8">
-      <h2 className="text-2xl font-bold mb-6">Featured Projects</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="my-1">
+      <h2 className={`${title({ size: "sm", color: "blue" })} mb-5 ml-2`}>
+        Projects
+      </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
         {projects.map((project, index) => (
           <Card key={index} className="w-full">
             <CardBody className="p-0">
@@ -283,9 +286,12 @@ function ProjectsSection({ projects }: { projects: Project[] }) {
 // Skills Section Component
 function SkillsSection({ skills }: { skills: Skills }) {
   return (
-    <div className="my-8">
-      <h2 className="text-2xl font-bold mb-6">Technical Skills</h2>
-      <Tabs aria-label="Skills Categories">
+    <div className="my-1">
+      <h2 className={`${title({ size: "sm", color: "blue" })} mb-5 ml-2`}>
+        Skills
+      </h2>
+      <br></br>
+      <Tabs aria-label="Skills Categories" className="mt-5">
         <Tab key="frontend" title="Frontend">
           <div className="space-y-4 mt-4">
             {skills.frontend.map((skill, index) => (
@@ -354,9 +360,11 @@ function ExperienceSection({
   education: Education[];
 }) {
   return (
-    <div className="my-8">
-      <h2 className="text-2xl font-bold mb-6">Work Experience</h2>
-      <div className="space-y-6">
+    <div className="my-1">
+      <h2 className={`${title({ size: "sm", color: "blue" })} mb-5 ml-2`}>
+        Experience
+      </h2>
+      <div className="space-y-6 mt-5">
         {experience.map((job, index) => (
           <Card key={index} className="w-full">
             <CardBody>
@@ -381,10 +389,12 @@ function ExperienceSection({
         ))}
       </div>
 
-      <Divider className="my-8" />
+      <Divider className="my-4" />
 
-      <h2 className="text-2xl font-bold mb-6">Education</h2>
-      <div className="space-y-6">
+      <h2 className={`${title({ size: "sm", color: "blue" })} mb-5 ml-2`}>
+        Experience
+      </h2>
+      <div className="space-y-6 mt-5">
         {education.map((edu, index) => (
           <Card key={index} className="w-full">
             <CardBody>
@@ -407,40 +417,44 @@ function ExperienceSection({
 // Contact Section Component
 function ContactSection() {
   return (
-    <Card className="w-full my-8">
+    <Card className="w-full my-1">
       <CardBody>
-        <h2 className="text-2xl font-bold mb-4">Get In Touch</h2>
+        <h2 className={`${title({ size: "sm", color: "blue" })} mb-5 ml-1`}>
+          Get In Touch
+        </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
             <p className="mb-4">
               I'm always open to discussing new projects, creative ideas or
               opportunities to be part of your vision.
             </p>
+
+            {/*Add Icons for below links*/}
             <div className="space-y-3">
               <div className="flex items-center">
                 <span className="font-medium w-24">Email:</span>
-                <a href="mailto:ryan.lim@example.com" className="text-primary">
-                  ryan.lim@example.com
+                <a href="mailto:limkl.ryan@gmail.com" className="text-primary">
+                  limkl.ryan@gmail.com
                 </a>
               </div>
               <div className="flex items-center">
                 <span className="font-medium w-24">LinkedIn:</span>
                 <a
-                  href="https://linkedin.com/in/ryanlim"
+                  href="https://linkedin.com/in/ryan--lim"
                   target="_blank"
                   className="text-primary"
                 >
-                  linkedin.com/in/ryanlim
+                  linkedin.com/in/ryan--lim/
                 </a>
               </div>
               <div className="flex items-center">
                 <span className="font-medium w-24">GitHub:</span>
                 <a
-                  href="https://github.com/ryanlim"
+                  href="https://github.com/trinityprime"
                   target="_blank"
                   className="text-primary"
                 >
-                  github.com/ryanlim
+                  github.com/trinityprime
                 </a>
               </div>
             </div>
