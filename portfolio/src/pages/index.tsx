@@ -6,15 +6,15 @@ import flagIcon from "../../public/sg flag.svg";
 import { Card, CardBody, CardFooter } from "@heroui/card";
 import { Button } from "@heroui/button";
 import { Chip } from "@heroui/chip";
-import { Progress } from "@heroui/progress";
 import { Divider } from "@heroui/divider";
 import { Tabs, Tab } from "@heroui/tabs";
 import { title } from "../components/primitives";
+import "devicon/devicon.min.css";
 
 // Type Definitions
 type Project = {
   title: string;
-  description: string;
+  description: string | JSX.Element;
   tech: string[];
   image: string;
   github: string;
@@ -23,17 +23,23 @@ type Project = {
 
 type Skill = {
   name: string;
-  level: number;
 };
 
 type Skills = {
   frontend: Skill[];
   backend: Skill[];
-  devOps: Skill[];
 };
 
 type Experience = {
   company: string;
+  role: string;
+  period: string;
+  description: string;
+  achievements: string[];
+};
+
+type Volunteering = {
+  organisation: string;
   role: string;
   period: string;
   description: string;
@@ -53,91 +59,83 @@ export default function IndexPage() {
     {
       title: "E-Commerce Platform",
       description:
-        "A full-stack e-commerce solution with cart functionality and payment integration",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
+        "Team project, in which I managed login, registration + user and admin related CRUD functions alongside 2FA and reset password functionalities",
+      tech: ["React", "C#", "MSSQL"],
       image: "/project1.jpg",
-      github: "https://github.com/yourusername/ecommerce",
+      github: "https://github.com/trinityprime/EDP-GreenThread-Apparel",
       demo: "https://myproject.com",
     },
     {
       title: "52 Blue",
       description:
-        "Solo passion project about a individual whale of unidentified species that calls at the unusual frequency of 52 hertz",
+        "Individual passion project about a individual whale of unidentified species that calls at the unusual frequency of 52 hertz",
       tech: ["React.js", "Tailwind CSS"],
       image: "/52 blue.png",
       github: "https://github.com/trinityprime/52hz-",
       demo: "https://52hz-github-io-rxdz.vercel.app/",
     },
     {
-      title: "Portfolio Website",
-      description: "Personal portfolio website built with Next.js and HeroUI",
-      tech: ["Next.js", "HeroUI", "Tailwind CSS"],
+      title: "Movie Viewer App",
+      description: (
+        <>
+          Solo project as part of my Mobile Application Development module. The
+          app fetches movies using the&nbsp;
+          <a
+            href="https://developer.themoviedb.org/docs/getting-started"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline"
+          >
+            TMDB API
+          </a>
+        </>
+      ),
+      tech: ["Jetpack Compose", "Kotlin"],
       image: "/project3.jpg",
-      github: "https://github.com/yourusername/portfolio",
+      github: "https://github.com/trinityprime/Movie-Viewer-App",
       demo: "https://myportfolio.com",
     },
   ];
 
   const skills: Skills = {
-    frontend: [
-      { name: "React", level: 90 },
-      { name: "Vue.js", level: 75 },
-      { name: "HTML/CSS", level: 95 },
-      { name: "JavaScript", level: 85 },
-    ],
-    backend: [
-      { name: "Node.js", level: 80 },
-      { name: "Python", level: 70 },
-      { name: "Express", level: 85 },
-      { name: "MongoDB", level: 75 },
-    ],
-    devOps: [
-      { name: "Git", level: 90 },
-      { name: "Docker", level: 65 },
-      { name: "AWS", level: 60 },
-      { name: "CI/CD", level: 70 },
-    ],
+    frontend: [{ name: "React" }, { name: "HTML/CSS" }],
+    backend: [{ name: "Python" }, { name: "Javascript" }, { name: "C#" }],
   };
 
-  const experience: Experience[] = [
+  const experience: Experience[] = [];
+
+  const volunteering: Volunteering[] = [
     {
-      company: "Tech Solutions Inc.",
-      role: "Frontend Developer",
-      period: "2022 - Present",
+      organisation: "The Boys' Brigade in Singapore",
+      role: "Head Primer",
+      period: "Apr 2023 - Present",
       description:
-        "Developed responsive web applications using React and Vue.js. Implemented user authentication and dashboard analytics.",
+        "Responsible for developing training programmes, and mentorship of members of the 64th Boys' Brigade",
       achievements: [
-        "Reduced page load time by 40%",
-        "Implemented CI/CD pipeline",
-        "Led team of 3 junior developers",
+        "Planned and led multiple events, in the presence of ~40 students (Boys)",
+        "Led a group of 10-20 boys for 4 days to ensure the packing of hampers in a warehouse for the needy.",
+        "Carried out the role of Contingent Commander during the TGCC National Day Observance Ceremony, raising the National Flag.",
       ],
     },
     {
-      company: "Digital Innovators",
-      role: "Web Development Intern",
-      period: "2021 - 2022",
+      organisation: "Nee Soon East Playground Volunteers",
+      role: "Volunteeer",
+      period: "Nov 2024 - Present",
       description:
-        "Assisted in developing e-commerce solutions and content management systems.",
+        "Helped to onboard newer volunteers, familiarising them with the organisation environment and showing them the ropes on what is usually done during weekly sessions. Also involved in woodwork and construction of various structures for children to enjoy in the playground.",
       achievements: [
-        "Built custom WordPress themes",
-        "Implemented payment gateway integrations",
-        "Optimized database queries",
+        "Involved in construction and painting of mini wooden Christmas trees for Christmas celebrations",
+        "Involved in landscaping, woodwork, as well as the movement and organisation of logistics",
       ],
     },
   ];
 
   const education: Education[] = [
     {
-      institution: "Singapore University of Technology",
-      degree: "BSc in Computer Science",
-      year: "2018 - 2022",
-      details: "Specialization in Web Technologies and Database Management",
-    },
-    {
-      institution: "Coursera",
-      degree: "Full Stack Web Development Certification",
-      year: "2021",
-      details: "MERN Stack specialization with honors",
+      institution: "Nanyang Polytechnic",
+      degree: "Diploma in Information Technology",
+      year: "Apr 2023 - Feb 2026",
+      details: "",
     },
   ];
 
@@ -180,6 +178,7 @@ export default function IndexPage() {
               <Tab key="experience" title="Experience">
                 <ExperienceSection
                   experience={experience}
+                  volunteering={volunteering}
                   education={education}
                 />
               </Tab>
@@ -266,15 +265,17 @@ function ProjectsSection({ projects }: { projects: Project[] }) {
               >
                 GitHub
               </Button>
-              <Button
-                size="sm"
-                as="a"
-                href={project.demo}
-                target="_blank"
-                color="primary"
-              >
-                Live Demo
-              </Button>
+              {index !== 0 && index !== 2 && (
+                <Button
+                  size="sm"
+                  as="a"
+                  href={project.demo}
+                  target="_blank"
+                  color="primary"
+                >
+                  Live Demo
+                </Button>
+              )}
             </CardFooter>
           </Card>
         ))}
@@ -283,70 +284,70 @@ function ProjectsSection({ projects }: { projects: Project[] }) {
   );
 }
 
-// Skills Section Component
 function SkillsSection({ skills }: { skills: Skills }) {
+  const categories = [
+    { title: "App Dev", skills: ["Jetpack Compose", "Kotlin"] },
+    { title: "Web Dev", skills: skills.frontend.map((skill) => skill.name) },
+    { title: "Languages", skills: skills.backend.map((skill) => skill.name) },
+    { title: "VCS", skills: ["Git(Hub)"] },
+    { title: "Design", skills: ["Figma"] },
+  ];
+
+  const getIcon = (skill: string) => {
+    switch (skill) {
+      case "Kotlin":
+        return "devicon-kotlin-plain";
+      case "Jetpack Compose":
+        return "devicon-jetpackcompose-plain";
+      case "React":
+        return "devicon-react-original";
+      case "HTML/CSS":
+        return "devicon-html5-plain";
+      case "Python":
+        return "devicon-python-plain";
+      case "Javascript":
+        return "devicon-javascript-plain";
+      case "C#":
+        return "devicon-csharp-plain-wordmark";
+      case "Git(Hub)":
+        return "devicon-git-plain";
+      case "Figma":
+        return "devicon-figma-plain";
+      default:
+        return "";
+    }
+  };
+
   return (
     <div className="my-1">
       <h2 className={`${title({ size: "sm", color: "blue" })} mb-5 ml-2`}>
         Skills
       </h2>
-      <br></br>
-      <Tabs aria-label="Skills Categories" className="mt-5">
-        <Tab key="frontend" title="Frontend">
-          <div className="space-y-4 mt-4">
-            {skills.frontend.map((skill, index) => (
-              <div key={index}>
-                <div className="flex justify-between mb-1">
-                  <span className="text-sm font-medium">{skill.name}</span>
-                  <span className="text-sm font-medium">{skill.level}%</span>
-                </div>
-                <Progress
-                  value={skill.level}
-                  color="primary"
-                  aria-label={`${skill.name} proficiency`}
-                  className="h-2"
-                />
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
+        {categories.map((category, index) => (
+          <Card key={index} className="w-full">
+            <CardBody>
+              <div className="flex items-center">
+                <h3 className="text-2xl font-bold">{category.title}</h3>
+                {category.skills.map((skill, i) => (
+                  <i
+                    key={i}
+                    className={`${getIcon(skill)} devicon-icon text-3xl ml-3`}
+                    title={skill}
+                  ></i>
+                ))}
               </div>
-            ))}
-          </div>
-        </Tab>
-        <Tab key="backend" title="Backend">
-          <div className="space-y-4 mt-4">
-            {skills.backend.map((skill, index) => (
-              <div key={index}>
-                <div className="flex justify-between mb-1">
-                  <span className="text-sm font-medium">{skill.name}</span>
-                  <span className="text-sm font-medium">{skill.level}%</span>
-                </div>
-                <Progress
-                  value={skill.level}
-                  color="primary"
-                  aria-label={`${skill.name} proficiency`}
-                  className="h-2"
-                />
-              </div>
-            ))}
-          </div>
-        </Tab>
-        <Tab key="devops" title="DevOps">
-          <div className="space-y-4 mt-4">
-            {skills.devOps.map((skill, index) => (
-              <div key={index}>
-                <div className="flex justify-between mb-1">
-                  <span className="text-sm font-medium">{skill.name}</span>
-                  <span className="text-sm font-medium">{skill.level}%</span>
-                </div>
-                <Progress
-                  value={skill.level}
-                  color="primary"
-                  aria-label={`${skill.name} proficiency`}
-                  className="h-2"
-                />
-              </div>
-            ))}
-          </div>
-        </Tab>
-      </Tabs>
+              <ul className="mt-3 space-y-3">
+                {category.skills.map((skill, i) => (
+                  <li key={i} className="text-lg text-gray-700">
+                    • {skill}
+                  </li>
+                ))}
+              </ul>
+            </CardBody>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 }
@@ -354,9 +355,11 @@ function SkillsSection({ skills }: { skills: Skills }) {
 // Experience and Education Section Component
 function ExperienceSection({
   experience,
+  volunteering,
   education,
 }: {
   experience: Experience[];
+  volunteering: Volunteering[];
   education: Education[];
 }) {
   return (
@@ -365,19 +368,55 @@ function ExperienceSection({
         Experience
       </h2>
       <div className="space-y-6 mt-5">
-        {experience.map((job, index) => (
+        {experience.length > 0 ? (
+          experience.map((job, index) => (
+            <Card key={index} className="w-full">
+              <CardBody>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <h3 className="text-xl font-bold">{job.role}</h3>
+                    <p className="text-md text-primary">{job.company}</p>
+                  </div>
+                  <Chip variant="flat">{job.period}</Chip>
+                </div>
+                <p className="mt-3">{job.description}</p>
+                <div className="mt-4">
+                  <p className="font-medium">Key Achievements:</p>
+                  <ul className="list-disc pl-5 mt-2">
+                    {job.achievements.map((achievement, i) => (
+                      <li key={i}>{achievement}</li>
+                    ))}
+                  </ul>
+                </div>
+              </CardBody>
+            </Card>
+          ))
+        ) : (
+          <p className="text-black-600 ml-3">
+            No work experience yet, but eager to learn and grow!
+          </p>
+        )}
+      </div>
+
+      <Divider className="my-4" />
+
+      <h2 className={`${title({ size: "sm", color: "blue" })} mb-5 ml-2`}>
+        Volunteering Experience
+      </h2>
+      <div className="space-y-6 mt-5">
+        {volunteering.map((job, index) => (
           <Card key={index} className="w-full">
             <CardBody>
               <div className="flex justify-between items-start">
                 <div>
                   <h3 className="text-xl font-bold">{job.role}</h3>
-                  <p className="text-md text-primary">{job.company}</p>
+                  <p className="text-md text-primary">{job.organisation}</p>
                 </div>
                 <Chip variant="flat">{job.period}</Chip>
               </div>
               <p className="mt-3">{job.description}</p>
               <div className="mt-4">
-                <p className="font-medium">Key Achievements:</p>
+                <p className="font-medium">Contributions:</p>
                 <ul className="list-disc pl-5 mt-2">
                   {job.achievements.map((achievement, i) => (
                     <li key={i}>{achievement}</li>
@@ -392,7 +431,7 @@ function ExperienceSection({
       <Divider className="my-4" />
 
       <h2 className={`${title({ size: "sm", color: "blue" })} mb-5 ml-2`}>
-        Experience
+        Education
       </h2>
       <div className="space-y-6 mt-5">
         {education.map((edu, index) => (
@@ -459,7 +498,7 @@ function ContactSection() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col space-y-4">
+          {/* <div className="flex flex-col space-y-4">
             <p className="mb-2">Or send me a message directly:</p>
             <input
               className="w-full px-4 py-2 border rounded-md"
@@ -476,7 +515,7 @@ function ContactSection() {
               rows={4}
             />
             <Button color="primary">Send Message</Button>
-          </div>
+          </div> */}
         </div>
       </CardBody>
     </Card>
