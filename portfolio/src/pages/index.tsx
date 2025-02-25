@@ -10,6 +10,7 @@ import { Divider } from "@heroui/divider";
 import { Tabs, Tab } from "@heroui/tabs";
 import { title } from "../components/primitives";
 import "devicon/devicon.min.css";
+import "../styles/globals.css";
 
 // Type Definitions
 type Project = {
@@ -61,7 +62,7 @@ export default function IndexPage() {
       description:
         "Team project, in which I managed login, registration + user and admin related CRUD functions alongside 2FA and reset password functionalities",
       tech: ["React", "C#", "MSSQL"],
-      image: "/project1.jpg",
+      image: "/GreenThread.jpeg",
       github: "https://github.com/trinityprime/EDP-GreenThread-Apparel",
       demo: "https://myproject.com",
     },
@@ -91,7 +92,7 @@ export default function IndexPage() {
         </>
       ),
       tech: ["Jetpack Compose", "Kotlin"],
-      image: "/project3.jpg",
+      image: "/MovieViewerApp.jpeg",
       github: "https://github.com/trinityprime/Movie-Viewer-App",
       demo: "https://myportfolio.com",
     },
@@ -468,36 +469,19 @@ function ContactSection() {
               opportunities to be part of your vision.
             </p>
 
-            {/*Add Icons for below links*/}
-            <div className="space-y-3">
-              <div className="flex items-center">
-                <span className="font-medium w-24">Email:</span>
-                <a href="mailto:limkl.ryan@gmail.com" className="text-primary">
-                  limkl.ryan@gmail.com
-                </a>
-              </div>
-              <div className="flex items-center">
-                <span className="font-medium w-24">LinkedIn:</span>
-                <a
-                  href="https://linkedin.com/in/ryan--lim"
-                  target="_blank"
-                  className="text-primary"
-                >
-                  linkedin.com/in/ryan--lim/
-                </a>
-              </div>
-              <div className="flex items-center">
-                <span className="font-medium w-24">GitHub:</span>
-                <a
-                  href="https://github.com/trinityprime"
-                  target="_blank"
-                  className="text-primary"
-                >
-                  github.com/trinityprime
-                </a>
-              </div>
+            <div className="flex justify-start space-x-6 mt-4 ml-3">
+              <a href="mailto:limkl.ryan@gmail.com" target="_blank">
+                <i className="devicon-google-plain colored text-4xl"></i>
+              </a>
+              <a href="https://linkedin.com/in/ryan--lim" target="_blank">
+                <i className="devicon-linkedin-plain colored text-4xl"></i>
+              </a>
+              <a href="https://github.com/trinityprime" target="_blank">
+                <i className="devicon-github-original colored text-4xl"></i>
+              </a>
             </div>
           </div>
+
           {/* <div className="flex flex-col space-y-4">
             <p className="mb-2">Or send me a message directly:</p>
             <input
